@@ -1,1 +1,27 @@
-
+spring:
+  application:
+    name: spring-cloud-config-server
+  cloud:
+    bus:
+      enabled: true
+    config:
+      server:
+        git:
+          uri: https://github.com/sunnypandas/spring-cloud-config-repo.git
+          clone-on-start: true
+          username: user
+          password: pass
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+  kafka:
+    bootstrap-servers: localhost:9092
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
